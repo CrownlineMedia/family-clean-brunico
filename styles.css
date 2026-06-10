@@ -252,48 +252,65 @@ img { max-width: 100%; display: block; }
 /* ==========================================================================
    SERVICES
    ========================================================================== */
-.cards {
+.services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  grid-template-columns: repeat(4, 1fr);   /* balanced 4-across on desktop */
   gap: 1.5rem;
 }
-.card {
+@media (max-width: 980px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+/* Premium image cards: photo background + navy fade + white copy */
+.service-card {
   position: relative;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  padding: 2rem 1.85rem;
+  isolation: isolate;
   overflow: hidden;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-radius: var(--r);
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: var(--shadow);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
-.card::before {
+.service-card__img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.service-card::after {                 /* gradient for legibility */
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--navy), #4f74d6);
-  transform: scaleX(0);
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top,
+    rgba(14, 23, 52, 0.92) 0%,
+    rgba(14, 23, 52, 0.70) 30%,
+    rgba(14, 23, 52, 0.20) 60%,
+    rgba(14, 23, 52, 0.04) 100%);
+  transition: opacity 0.45s var(--ease);
+}
+.service-card__content { position: relative; padding: 1.85rem; color: #fff; }
+.service-card__content::before {       /* soft accent line above title */
+  content: "";
+  display: block;
+  width: 40px; height: 3px;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #6e90ff, #aebfff);
   transform-origin: left;
+  transform: scaleX(0.6);
   transition: transform 0.45s var(--ease);
 }
-.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
-.card:hover::before { transform: scaleX(1); }
+.service-card__content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
+.service-card__content p { color: rgba(233, 238, 250, 0.88); margin: 0; font-size: 0.97rem; }
 
-.card-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 56px; height: 56px;
-  margin-bottom: 1.25rem;
-  border-radius: 14px;
-  background: var(--bg-tint);
-  color: var(--navy);
-  transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
-}
-.card-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.card:hover .card-icon { background: var(--navy); color: #fff; transform: translateY(-2px); }
-
-.card h3 { margin-bottom: 0.5rem; }
-.card p { color: var(--muted); margin: 0; font-size: 0.98rem; }
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.service-card:hover .service-card__img { transform: scale(1.07); }
+.service-card:hover .service-card__content::before { transform: scaleX(1); }
 
 /* ==========================================================================
    ABOUT
@@ -458,17 +475,10 @@ img { max-width: 100%; display: block; }
    ========================================================================== */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; }
-/* Stagger cards / values within a grid */
-.cards .card:nth-child(2) { transition-delay: 0.06s; }
-.cards .card:nth-child(3) { transition-delay: 0.12s; }
-.cards .card:nth-child(4) { transition-delay: 0.18s; }
-.cards .card:nth-child(5) { transition-delay: 0.06s; }
-.cards .card:nth-child(6) { transition-delay: 0.12s; }
-.cards .card:nth-child(7) { transition-delay: 0.18s; }
-.cards .card:nth-child(8) { transition-delay: 0.24s; }
-.values .value:nth-child(2) { transition-delay: 0.08s; }
-.values .value:nth-child(3) { transition-delay: 0.16s; }
-.values .value:nth-child(4) { transition-delay: 0.24s; }
+/* Stagger service cards within the grid */
+.services-grid .service-card:nth-child(2) { transition-delay: 0.08s; }
+.services-grid .service-card:nth-child(3) { transition-delay: 0.16s; }
+.services-grid .service-card:nth-child(4) { transition-delay: 0.24s; }
 
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
