@@ -308,9 +308,55 @@ img { max-width: 100%; display: block; }
 .service-card__content h3 { color: #fff; font-size: 1.4rem; margin-bottom: 0.4rem; }
 .service-card__content p { color: rgba(233, 238, 250, 0.88); margin: 0; font-size: 0.97rem; }
 
-.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.service-card:hover .service-card__img { transform: scale(1.07); }
-.service-card:hover .service-card__content::before { transform: scaleX(1); }
+/* Desktop hover effects (pointer devices only — avoids sticky hover on touch) */
+@media (hover: hover) {
+  .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .service-card:hover .service-card__img { transform: scale(1.07); }
+  .service-card:hover .service-card__content::before { transform: scaleX(1); }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE: tap-to-expand premium cards (same look as desktop, touch-optimized)
+   Collapsed = image + title + accent line. Tap a card to reveal its blurb.
+   -------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .service-card {
+    min-height: 230px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Description hidden by default, revealed when the card is .active */
+  .service-card__content p {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    transform: translateY(12px);
+    overflow: hidden;
+    transition: opacity 0.4s var(--ease), transform 0.45s var(--ease),
+                max-height 0.45s var(--ease), margin-top 0.45s var(--ease);
+  }
+
+  /* Active card: darker overlay, blurb fades up, title rises, accent extends */
+  .service-card.active { min-height: 300px; }
+  .service-card.active::after {
+    background: linear-gradient(to top,
+      rgba(6, 11, 28, 0.96) 0%,
+      rgba(6, 11, 28, 0.86) 38%,
+      rgba(6, 11, 28, 0.45) 70%,
+      rgba(6, 11, 28, 0.12) 100%);
+  }
+  .service-card.active .service-card__content p {
+    opacity: 1;
+    max-height: 12rem;
+    margin-top: 0.55rem;
+    transform: translateY(0);
+  }
+  .service-card.active .service-card__content::before { transform: scaleX(1); }
+
+  /* Accessible focus ring for keyboard / touch */
+  .service-card:focus-visible { outline: 3px solid #7e9bff; outline-offset: 3px; }
+}
 
 /* ==========================================================================
    ABOUT
