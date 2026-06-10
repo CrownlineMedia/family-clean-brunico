@@ -215,6 +215,13 @@ img { max-width: 100%; display: block; }
 .hero-inner { display: flex; align-items: center; min-height: clamp(560px, 82vh, 760px); padding-block: 4rem; }
 .hero-content { max-width: 640px; min-width: 0; }
 .hero h1 { color: #fff; margin-bottom: 1.1rem; }
+/* Logo lockup in place of a text headline */
+.hero-logo { margin: 0 0 1.5rem; line-height: 0; }
+.hero-logo img {
+  width: clamp(260px, 38vw, 440px);
+  max-width: 100%;
+  height: auto;
+}
 .hero .lead {
   font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
   color: rgba(233, 238, 250, 0.85);
