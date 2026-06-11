@@ -107,6 +107,58 @@ const I18N = {
     "footer.rights": "Family Clean Brunico. All rights reserved.",
     "footer.bottomLoc": "Brunico, Italy",
   },
+  de: {
+    "meta.title": "Family Clean Brunico — Professionelle Reinigungsdienste in Bruneck",
+    "meta.desc": "Professionelle Reinigungsdienste in Bruneck, Italien. Reinigung von Häusern, Wohnungen, Büros und Unternehmen — zuverlässig und detailgenau. Rufen Sie für ein kostenloses Angebot an.",
+    "nav.home": "Home",
+    "nav.services": "Leistungen",
+    "nav.about": "Über uns",
+    "nav.contact": "Kontakt",
+    "nav.callBtn": "Anrufen +39 388 8271051",
+    "hero.eyebrow": "Professionelle Reinigung · Bruneck, Italien",
+    "hero.lead": "Professionelle Reinigung für Häuser, Wohnungen, Büros und Unternehmen — mit Sorgfalt, Zuverlässigkeit und Liebe zum Detail.",
+    "cta.estimate": "Kostenloses Angebot anfordern",
+    "cta.viewServices": "Leistungen ansehen",
+    "services.eyebrow": "Was wir bieten",
+    "services.title": "Reinigungsdienste für jeden Bereich",
+    "services.sub": "Maßgeschneiderte, detailgenaue Reinigung für Häuser, Unternehmen und alles dazwischen.",
+    "svc.home.title": "Hausreinigung",
+    "svc.home.desc": "Gründliche, regelmäßige oder einmalige Reinigung, die Ihr Zuhause frisch, ordentlich und behaglich hält.",
+    "svc.home.alt": "Reinigungskraft saugt den Teppich eines Wohnzimmers",
+    "svc.apartment.title": "Wohnungsreinigung",
+    "svc.apartment.desc": "Effiziente, sorgfältige Reinigung speziell für Wohnungen und kleinere Wohnräume.",
+    "svc.apartment.alt": "Reinigungskraft putzt das Fenster einer Wohnung",
+    "svc.office.title": "Büroreinigung",
+    "svc.office.desc": "Zuverlässige Reinigung für Büros und Arbeitsräume, abgestimmt auf Ihre Arbeitszeiten.",
+    "svc.office.alt": "Tiefenreinigung des Teppichs eines Büros",
+    "svc.business.title": "Gewerbereinigung",
+    "svc.business.desc": "Professionelle Reinigung für Geschäfte, Studios und Gewerberäume aller Art.",
+    "svc.business.alt": "Reinigungsteam bei der Arbeit in einer Geschäftslobby",
+    "about.eyebrow": "Über uns",
+    "about.title": "Reinigung, auf die Sie sich verlassen können — jederzeit",
+    "about.body": "Family Clean Brunico bietet zuverlässige, detailgenaue Reinigungsdienste für Häuser, Wohnungen, Büros und lokale Unternehmen in Bruneck und Umgebung. Wir setzen auf Vertrauen, Beständigkeit und Servicequalität.",
+    "about.li1": "Freundliches, professionelles Team",
+    "about.li2": "Gleichbleibend hochwertige Ergebnisse",
+    "about.li3": "Flexible Termine, die zu Ihnen passen",
+    "about.badgeStrong": "Lokal",
+    "about.badgeSpan": "Bruneck & Umgebung",
+    "contact.eyebrow": "Kontakt aufnehmen",
+    "contact.title": "Kostenloses Angebot anfordern",
+    "contact.sub": "Rufen Sie uns noch heute an, um Ihren Reinigungsbedarf zu besprechen und ein kostenloses Angebot anzufordern.",
+    "contact.phone": "Telefon",
+    "contact.email": "E-Mail",
+    "contact.area": "Einzugsgebiet",
+    "contact.areaVal": "Bruneck, Italien und Umgebung",
+    "contact.ctaTitle": "Sprechen wir über Ihre Räume",
+    "contact.ctaBody": "Lieber persönlich besprechen? Kontaktieren Sie uns telefonisch oder per E-Mail und wir melden uns mit einem kostenlosen, unverbindlichen Angebot.",
+    "contact.emailBtn": "E-Mail schreiben",
+    "footer.tagline": "Professionelle Reinigungsdienste",
+    "footer.location": "Bruneck, Italien",
+    "footer.exploreHead": "Entdecken",
+    "footer.contactHead": "Kontakt",
+    "footer.rights": "Family Clean Brunico. Alle Rechte vorbehalten.",
+    "footer.bottomLoc": "Bruneck, Italien",
+  },
 };
 
 function applyLanguage(lang) {
@@ -140,7 +192,7 @@ function applyLanguage(lang) {
 (function initLanguage() {
   let lang = "it";
   try { lang = localStorage.getItem("lang") || "it"; } catch (e) {}
-  if (lang !== "it" && lang !== "en") lang = "it";
+  if (lang !== "it" && lang !== "en" && lang !== "de") lang = "it";
   applyLanguage(lang);
   document.querySelectorAll(".lang-btn").forEach((b) =>
     b.addEventListener("click", () => applyLanguage(b.dataset.lang))

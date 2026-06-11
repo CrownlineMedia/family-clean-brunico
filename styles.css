@@ -187,6 +187,7 @@ img { max-width: 100%; display: block; }
   line-height: 1;
   transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
+.lang-btn + .lang-btn { border-left: 1px solid var(--line); }
 .lang-btn.active { background: var(--navy); color: #fff; }
 .lang-btn:not(.active):hover { color: var(--navy); }
 
@@ -610,12 +611,12 @@ img { max-width: 100%; display: block; }
   .hero-meta-sep { display: none; }
   .hero-meta-item { font-size: 0.88rem; }
 
-  /* Compact header so logo + IT/EN + call + menu all fit small phones */
-  .nav { gap: 0.45rem; }
-  .brand { height: 40px; }
-  .brand-logo { height: 100px; margin: -30px 0; }
-  .lang-btn { padding: 0.35rem 0.5rem; font-size: 0.78rem; }
-  .header-cta { padding: 0.6rem; }
+  /* Compact header so logo + IT/EN/DE + call + menu all fit small phones */
+  .nav { gap: 0.4rem; }
+  .brand { height: 38px; }
+  .brand-logo { height: 95px; margin: -28.5px 0; }
+  .lang-btn { padding: 0.3rem 0.42rem; font-size: 0.72rem; }
+  .header-cta { padding: 0.55rem; }
 
   /* Stack section CTAs full-width — but NOT the compact header call button */
   .hero-cta, .contact-actions { width: 100%; flex-direction: column; }
